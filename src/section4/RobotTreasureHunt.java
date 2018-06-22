@@ -22,22 +22,26 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 		Robot A = new Robot("mini");
 	private void goUp() throws InterruptedException {
 		// 2. Make the robot move up the screen (use setAngle(angle) and microMove(distance))
-	A.microMove(75);	
+	A.setAngle(0);
+	A.microMove(40);	
 	}	
 
 	private void goDown() throws InterruptedException{
 		// 3. make the robot move down the screen (use setAngle(angle) and microMove(distance))
-	A.microMove(-75);
+	A.setAngle(180);
+	A.microMove(40);
 	}
 
 	private void turnLeft() throws InterruptedException{
 		// 4. Make the robot turn to the left (use setAngle(angle) and microMove(distance))
 	A.setAngle(-90);
+	A.microMove(40);
 	}
 
 	private void turnRight() throws InterruptedException{
 		// 5. make the robot turn to the right (use setAngle(angle) and microMove(distance))
 	A.setAngle(90);
+	A.microMove(40);
 	}
 
 	private void spaceBarWasPressed() {
@@ -51,12 +55,25 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 		System.out.println(robotYLocation);
 		// 7. If robot is at same location as the little girl
 		//      --make a pop-up tell the robot where to go next
-		
+		if(robotXLocation==730) {
+			if(robotYLocation==420) {
+				JOptionPane.showMessageDialog(null, "Ask the boy for help with your quest. Press the space bar to ask.");
+			}
+		}
 		// 8. Give the user subsequent clues at different locations on the image
 		// (pirate robot, swamp, parrots, etc.)
-		
+		if(robotXLocation==210) {
+			if(robotYLocation==420) {
+				JOptionPane.showMessageDialog(null, "Look behind the rock.");
+			}
+		}
 		// 9.  If the robot is in the final location
 		//     --call the treasureFound() method
+		if(robotXLocation==330) {
+			if( robotYLocation==420) {
+				treasureFound();
+			}
+		}
 		
 	
 }
